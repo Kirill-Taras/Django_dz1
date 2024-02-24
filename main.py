@@ -13,14 +13,14 @@ class MyServer(BaseHTTPRequestHandler):
     """
     def get_html_content(self):
         with open("index.html") as f:
-            content = f.read
+            content = f.read()
             return content
 
     def do_GET(self):
         """ Метод для обработки входящих GET-запросов """
         page_content = self.get_html_content()
         self.send_response(200) # Отправка кода ответа
-        self.send_header("Content-type", "application/json") # Отправка типа данных, который будет передаваться
+        self.send_header("Content-type", "text/html") # Отправка типа данных, который будет передаваться
         self.end_headers() # Завершение формирования заголовков ответа
         self.wfile.write(bytes(page_content, "utf-8")) # Тело ответа
 
